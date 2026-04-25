@@ -2,6 +2,64 @@
 <html>
 <head>
     <title>причины чтобы любить виктора</title>
+	<style>  
+	body {
+            background: #8fcbff;
+	font-family: Arial, sans-serif;
+text-align: center;
+	}
+	h1 {
+            color: #00406b;       
+            text-align: center;
+	font-weight: normal;
+	}
+       p {
+            font-size: 18px;     
+            color: #007dd1;
+	 text-align: center;
+	border: 0;
+	display: inline-block;
+	background: #b7f2ff;
+	padding: 10px 20px;
+	border-radius: 5px;  
+  	box-shadow: 5px 5px 10px rgba(0,0,0,0.2);  
+        }
+	 p:hover {
+            transform: scale(1.05);     
+            box-shadow: 10px 10px 25px rgba(0,0,0,0.25); 
+	}
+        img {
+            border-radius: 20px;  
+            border: 3px solid white; 
+	  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+        }
+img:hover {
+    transform: scale(1.1)
+}
+
+        .heart {
+            position: fixed;
+            color: #ff3366;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: fly 1.5s ease-out forwards;
+        }
+        
+        @keyframes fly {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-150px) scale(1.5);
+            }
+}
+    </style>
 </head>
 <body>
     <h1><strong>почему я люблю виктора?</strong></h1>
@@ -15,6 +73,59 @@
     <p>он везде ставит меня на авы и обои <a href="https://vk.com/wifeyyy137">сами смотрите</a></p>
     <h1><em>причина номер 4.</h1>
     <p>он интересуется моими увлечениями</p>
+ <script>
+        // ВОТ ЭТО - JAVASCRIPT (летающие сердечки)
+        function createHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💖';
+            heart.className = 'heart';
+            
+            // Разные размеры и оттенки
+            const sizes = ['16px', '20px', '24px', '28px'];
+            const hearts = ['💖', '💗', '💓', '💕', '💝'];
+            
+            heart.style.fontSize = sizes[Math.floor(Math.random() * sizes.length)];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            
+            document.body.appendChild(heart);
+            
+            // Удаляем сердечко через 1.5 секунды
+            setTimeout(() => {
+                heart.remove();
+            }, 1500);
+        }
+        
+        // Ловим наведение мыши на все абзацы
+        document.querySelectorAll('p').forEach(elem => {
+            elem.addEventListener('mouseenter', (e) => {
+                // Создаем 3-5 сердечек
+                const count = Math.floor(Math.random() * 3) + 3;
+                for(let i = 0; i < count; i++) {
+                    const offsetX = (Math.random() - 0.5) * 60;
+                    const offsetY = (Math.random() - 0.5) * 40;
+                    setTimeout(() => {
+                        createHeart(e.clientX + offsetX, e.clientY + offsetY);
+                    }, i * 80);
+                }
+            });
+        });
+        
+        // Ловим наведение на картинку
+        document.querySelectorAll('img').forEach(elem => {
+            elem.addEventListener('mouseenter', (e) => {
+                const count = Math.floor(Math.random() * 4) + 4;
+                for(let i = 0; i < count; i++) {
+                    const offsetX = (Math.random() - 0.5) * 80;
+                    const offsetY = (Math.random() - 0.5) * 60;
+                    setTimeout(() => {
+                        createHeart(e.clientX + offsetX, e.clientY + offsetY);
+                    }, i * 60);
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
